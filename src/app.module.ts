@@ -1,13 +1,12 @@
-import { Module, Logger } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService  } from '@nestjs/config';
 import { Neo4jModule, Neo4jConfig } from 'nest-neo4j';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ArticleModule } from './article/article.module';
 
 @Module({
   imports: [
+    // ConfigModule 会使用根目录下的 .env 文件
     ConfigModule.forRoot({ isGlobal: true }),
     Neo4jModule.forRootAsync({
       imports: [ ConfigModule ],
@@ -24,8 +23,5 @@ import { ArticleModule } from './article/article.module';
     UserModule,
     ArticleModule,
   ],
-  providers: [AppService],
-  controllers: [AppController],
-  exports: []
 })
 export class AppModule {}

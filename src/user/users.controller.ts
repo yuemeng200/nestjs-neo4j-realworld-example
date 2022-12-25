@@ -6,7 +6,6 @@ import { AuthService } from './auth/auth.service';
 import { User } from './entity/user.entity';
 import { Neo4jErrorFilter } from 'nest-neo4j';
 import { LocalAuthGuard } from './auth/local-auth.guard';
-import { JwtAuthGuard } from './auth/jwt.auth-guard';
 
 
 @Controller('users')
